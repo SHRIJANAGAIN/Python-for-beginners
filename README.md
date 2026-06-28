@@ -893,7 +893,777 @@ pip install mypy
 mypy your_file.py
 ```
 
+
 ---
 
+## 33. Walrus Operator (`:=`) - Assignment Expressions
+Python 3.8 mein introduce hua ye operator aapko variable assign karte waqt uski value check karne ki power deta hai. Isse code chota aur clean hota hai.
 
---->  Now 32 T
+```python
+# ❌ Old Way (Do lines)
+data = input("Enter name: ")
+if data:
+    print(f"Hello, {data}")
+
+# ✅ New Way (Walrus Operator - Ek line!)
+if (data := input("Enter name: ")):
+    print(f"Hello, {data}")
+```
+
+---
+
+## 34. Match-Case Statements (Structural Pattern Matching)
+
+Python 3.10+ mein `switch-case` jaisa feature aa gaya hai, lekin ye usse kaafi zyada powerful hai.
+
+```python
+def http_status(code):
+    match code:
+        case 200:
+            return "OK"
+        case 404:
+            return "Not Found"
+        case 500 | 502 | 503:  # Multiple values match
+            return "Server Error"
+        case _:  # Default case
+            return "Unknown Status"
+```
+
+---
+
+## 35. Logging (Professional Debugging)
+
+`print()` ki jagah `logging` use karein production code mein.
+
+```python
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+logger.info("Application started")
+logger.error("Something went wrong!")
+```
+
+---
+## 36. Pathlib (Modern File Handling)
+
+`os.path` ki jagah `pathlib` use karein. Ye Object-Oriented hai.
+
+```python
+from pathlib import Path
+
+file_path = Path("documents") / "notes.txt"
+if file_path.exists():
+    print(file_path.read_text())
+```
+
+---
+
+## 37. Collections Module (Supercharged Data Structures)
+
+### Counter
+```python
+from collections import Counter
+counts = Counter(["apple", "banana", "apple"])
+print(counts['apple']) # 2
+```
+
+### defaultdict
+```python
+from collections import defaultdict
+d = defaultdict(list)
+d['key'].append(1) # No KeyError!
+```
+
+---
+
+## 38. Itertools (Efficient Looping)
+
+```python
+import itertools
+
+# Combinations
+pairs = list(itertools.combinations([1, 2, 3], 2))
+# Chain
+combined = list(itertools.chain([1, 2], [3, 4]))
+```
+
+---
+
+## 39. JSON Handling (Data Interchange)
+
+```python
+import json
+# Dict to JSON
+json_str = json.dumps({"name": "Shrijan"}, indent=4)
+
+# JSON to Dict
+data = json.loads(json_str)
+```
+
+---
+
+## 40. SQLite Database (Built-in SQL)
+
+```python
+import sqlite3
+
+conn = sqlite3.connect('test.db')
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS users (id INT, name TEXT)")
+cursor.execute("INSERT INTO users VALUES (1, 'Shrijan')")
+conn.commit()
+conn.close()
+```
+
+---
+
+## 41. Environment Variables (Security Best Practice)
+
+Kabhi bhi secrets code mein hardcode na karein.
+
+```python
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+api_key = os.getenv("API_KEY")
+```
+
+---
+
+## 42. Git & GitHub Basics (Version Control)
+
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git push origin main
+```
+
+---
+
+## 43. Flask Basics (Micro Web Framework)
+Simple web server banane ke liye best start.
+
+```python
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Hello World!"
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+---
+
+## 44. FastAPI Introduction (Modern High-Performance)
+
+Async support aur automatic docs ke sath modern framework.
+
+```python
+from fastapi import FastAPI
+app = FastAPI()
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int):
+    return {"item_id": item_id}
+```
+
+---
+
+## 45. REST API Principles
+
+- **Stateless:** Server client state save nahi karta.
+- **Resources:** URLs resources ko represent karte hain (/users, /posts).
+- **Methods:** GET (Read), POST (Create), PUT (Update), DELETE (Remove).
+
+---
+
+## 46. HTTP Methods (GET/POST/PUT/DELETE)
+
+```python
+# Flask Example
+@app.route('/user', methods=['POST'])
+def create_user():
+    data = request.json
+    # Save to DB
+    return {"message": "User created"}, 201
+```
+---
+
+## 47. Jinja2 Templating (HTML Rendering)
+
+Dynamic HTML pages generate karne ke liye.
+
+```html
+<!-- template.html -->
+<h1>Hello {{ name }}</h1>
+<ul>
+{% for item in items %}
+    <li>{{ item }}</li>
+{% endfor %}
+</ul>
+```
+
+---
+
+## 48. SQLAlchemy (ORM)
+
+Database ko Python objects ki tarah treat karein.
+
+```python
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
+class User(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+```
+
+---
+
+## 49. Pydantic Models (Data Validation)
+
+FastAPI aur data validation ke liye standard.
+
+```python
+from pydantic import BaseModel
+
+class Item(BaseModel):
+    name: str
+    price: float
+    is_offer: bool = False
+```
+---
+
+## 50. Authentication (JWT)
+
+Secure login systems ke liye JSON Web Tokens.
+
+```python
+import jwt
+token = jwt.encode({"user_id": 1}, "secret_key", algorithm="HS256")
+payload = jwt.decode(token, "secret_key", algorithms=["HS256"])
+```
+
+---
+
+## 51. NumPy Basics (Numerical Python)
+
+High-performance arrays aur mathematical operations.
+
+```python
+import numpy as np
+arr = np.array([1, 2, 3, 4])
+print(arr * 2) # [2, 4, 6, 8] - Vectorized operation (Fast!)
+```
+
+---
+
+## 52. Pandas DataFrames (Data Manipulation)
+
+Excel/CSV data handle karne ke liye best library.
+
+```python
+import pandas as pd
+df = pd.read_csv('data.csv')
+print(df.head())
+print(df.describe())
+```
+
+---
+
+## 53. Data Cleaning (Handling Missing Values)
+
+```python
+# Drop rows with missing values
+df.dropna(inplace=True)
+
+# Fill missing values with mean
+df['age'].fillna(df['age'].mean(), inplace=True)
+```
+
+---
+## 54. Matplotlib Plotting (Basic Visualization)
+
+```python
+import matplotlib.pyplot as plt
+plt.plot([1, 2, 3], [4, 5, 6])
+plt.title("My Graph")
+plt.show()
+```
+
+---
+
+## 55. Seaborn Visualizations (Statistical Plots)
+
+Matplotlib se sundar aur statistical graphs.
+
+```python
+import seaborn as sns
+sns.histplot(data=df, x="age")
+plt.show()
+```
+
+---
+
+## 56. Exploratory Data Analysis (EDA)
+
+Data ko samajhne ki process:
+1. Shape check karein (`df.shape`)
+2. Null values check karein (`df.isnull().sum()`)
+3. Correlation matrix dekhein (`df.corr()`)
+
+---
+
+## 57. Scikit-Learn Intro (ML Library)
+
+Machine Learning algorithms ka toolbox.
+
+```python
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+```
+
+---
+
+## 58. Linear Regression (Predictive Modeling)
+
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+X = np.array([[1], [2], [3]])
+y = np.array([2, 4, 6])
+
+model = LinearRegression()
+model.fit(X, y)
+print(model.predict([[4]])) # Output: [8.]
+```
+
+---
+
+## 59. Classification Models
+
+Email spam detection ya image recognition ke liye.
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+clf = DecisionTreeClassifier()
+clf.fit(X_train, y_train)
+predictions = clf.predict(X_test)
+```
+
+---
+
+## 60. Train/Test Split (Evaluation)
+
+Model ko unseen data par test karna zaroori hai.
+
+```python
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+```
+
+---
+
+## 61. TensorFlow/Keras Basics (Deep Learning)
+
+```python
+import tensorflow as tf
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(10, activation='relu'),
+    tf.keras.layers.Dense(1, activation='sigmoid')
+])
+model.compile(optimizer='adam', loss='binary_crossentropy')
+```
+
+---
+
+## 62. Neural Networks Intro
+
+Layers, Neurons, Weights, Biases, Activation Functions (ReLU, Sigmoid).
+---
+
+## 63. OpenCV for Computer Vision
+
+Image processing aur video analysis.
+
+```python
+import cv2
+img = cv2.imread('image.jpg')
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+cv2.imshow('Gray', gray)
+cv2.waitKey(0)
+```
+
+---
+
+## 64. NLP with NLTK/Spacy (Text Processing)
+
+```python
+import spacy
+nlp = spacy.load("en_core_web_sm")
+doc = nlp("Apple is looking at buying U.K. startup")
+for ent in doc.ents:
+    print(ent.text, ent.label_)
+```
+
+---
+
+## 65. Hugging Face Transformers (LLMs)
+
+Pre-trained models use karna easy hai.
+
+```python
+from transformers import pipeline
+classifier = pipeline("sentiment-analysis")
+result = classifier("I love Python!")
+print(result) # [{'label': 'POSITIVE', 'score': 0.99}]
+```
+
+---
+
+## 66. Time Complexity (Big O Notation)
+
+Code efficiency mapne ka tarika.
+- O(1): Constant (Fastest)
+- O(n): Linear
+- O(n^2): Quadratic (Slow for large data)
+
+---
+## 67. Profiling Code (cProfile)
+
+Bottlenecks dhundhne ke liye.
+
+```bash
+python -m cProfile my_script.py
+```
+
+---
+
+## 68. Multiprocessing (True Parallelism)
+
+CPU-bound tasks ke liye.
+
+```python
+from multiprocessing import Process
+
+def worker():
+    print("Working...")
+
+p = Process(target=worker)
+p.start()
+p.join()
+```
+
+---
+
+## 69. Threading vs Asyncio (Concurrency)
+
+- **Threading:** I/O bound tasks (Network calls).
+- **Asyncio:** Single-threaded concurrency (High performance web servers).
+
+---
+
+## 70. Caching (functools.lru_cache)
+
+Results ko memory mein save karein taaki dobara calculate na karna pade.
+
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fib(n):
+    if n < 2: return n
+    return fib(n-1) + fib(n-2)
+```
+
+---
+## 71. Memory Management (Garbage Collection)
+
+Python automatically unused objects delete karta hai. `gc` module se control kar sakte hain.
+
+```python
+import gc
+gc.collect() # Force garbage collection
+```
+
+---
+
+## 72. Unit Testing (unittest)
+
+```python
+import unittest
+
+class TestMath(unittest.TestCase):
+    def test_add(self):
+        self.assertEqual(1 + 1, 2)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+---
+
+## 73. Pytest Framework (Modern Testing)
+
+`unittest` se simple aur powerful.
+
+```python
+# test_main.py
+def test_add():
+    assert 1 + 1 == 2
+```
+Run: `pytest`
+
+---
+
+## 74. Mocking & Patching (Isolating Dependencies)
+
+External APIs ya DB ko fake karna testing ke liye.
+
+```python
+from unittest.mock import patch
+
+@patch('module.external_api_call')
+def test_function(mock_api):
+    mock_api.return_value = {"data": "fake"}
+    # Test logic here```
+
+---
+
+## 75. Test Driven Development (TDD)
+
+1. Test likho (Fail hoga).
+2. Code likho (Pass hoga).
+3. Refactor karo.
+
+---
+
+## 76. Code Coverage
+
+Check karein kitna code test ho raha hai.
+
+```bash
+pytest --cov=my_module
+```
+
+---
+
+## 77. SOLID Principles (Clean Code)
+
+- **S**ingle Responsibility
+- **O**pen/Closed
+- **L**iskov Substitution
+- **I**nterface Segregation
+- **D**ependency Inversion
+
+---
+
+## 78. Singleton Pattern
+
+Ek class ka sirf ek instance ensure karna.
+
+```python
+class Singleton:
+    _instance = None
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+```
+
+---
+
+## 79. Factory Pattern
+
+Objects create karne ke liye interface provide karna bina specific class bataye.
+---
+
+## 80. Observer Pattern
+
+Event-based programming. Jab state change ho, subscribers notify hon.
+
+---
+
+## 81. Dependency Injection
+
+Dependencies ko bahar se inject karna taaki code loosely coupled ho.
+
+---
+
+## 82. MVC Architecture (Model-View-Controller)
+
+- **Model:** Data & Logic
+- **View:** UI
+- **Controller:** Input handling
+
+---
+
+## 83. Docker Basics (Containerization)
+
+App ko isolate environment mein run karna.
+
+```bash
+docker build -t myapp .
+docker run -p 8000:8000 myapp
+```
+
+---
+
+## 84. Dockerfile for Python
+
+```dockerfile
+FROM python:3.9-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+CMD ["python", "app.py"]
+```
+
+---
+
+## 85. CI/CD with GitHub Actions
+
+Automated testing aur deployment.
+```yaml
+# .github/workflows/main.yml
+name: Python CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run tests
+        run: pytest
+```
+
+---
+
+## 86. Cloud Deployment (AWS/Heroku)
+
+- **Heroku:** Easy deploy (`git push heroku main`).
+- **AWS EC2:** Virtual server.
+- **AWS Lambda:** Serverless functions.
+
+---
+
+## 87. Gunicorn & Nginx (Production Server)
+
+Flask/Django ko directly run na karein. Gunicorn use karein.
+
+```bash
+gunicorn -w 4 -b 0.0.0.0:8000 app:app
+```
+
+---
+
+## 88. Hashing Passwords (bcrypt)
+
+Passwords ko plain text mein store na karein.
+
+```python
+import bcrypt
+hashed = bcrypt.hashpw(b"password", bcrypt.gensalt())
+bcrypt.checkpw(b"password", hashed)
+```
+---
+
+## 89. SQL Injection Prevention
+
+Always use parameterized queries.
+
+```python
+# Bad
+cursor.execute(f"SELECT * FROM users WHERE name = '{name}'")
+
+# Good
+cursor.execute("SELECT * FROM users WHERE name = %s", (name,))
+```
+
+---
+
+## 90. XSS Protection
+
+User input ko escape karein HTML mein. Jinja2 auto-escape karta hai by default.
+
+---
+
+## 91. Rate Limiting
+
+API abuse rokne ke liye requests limit karein.
+
+```python
+from flask_limiter import Limiter
+limiter = Limiter(app, default_limits=["200 per day"])
+```
+
+---
+
+## 92. Secrets Management
+
+AWS Secrets Manager ya HashiCorp Vault use karein production mein.
+
+---
+
+## 93. Metaclasses (Class of a Class)
+
+Classes ko dynamically create ya modify karna.
+
+```python
+class Meta(type):
+    def __new__(cls, name, bases, dct):
+        print(f"Creating class {name}")
+        return super().__new__(cls, name, bases, dct)
+
+class MyClass(metaclass=Meta):    pass
+```
+
+---
+
+## 94. Descriptors (Managing Attributes)
+
+Attribute access ko customize karna (`__get__`, `__set__`).
+
+---
+
+## 95. Context Managers (Advanced)
+
+`__enter__` aur `__exit__` methods implement karna.
+
+---
+
+## 96. Coroutines Deep Dive
+
+`async` aur `await` ke peeche ka event loop.
+
+---
+
+## 97. Bytecode & Disassembly (Under the Hood)
+
+Python code kaise machine instructions mein badalta hai.
+
+```python
+import dis
+def foo(): pass
+dis.dis(foo)
+```
+
+---
+
