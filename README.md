@@ -49,6 +49,89 @@ Welcome to the ultimate Python guide! Ye structured tutorial series aapko bilkul
 30. [Async/Await](#30-asyncawait-concurrent-programming)
 31. [Testing](#31-testing-writing-tests)
 32. [Best Practices](#32-best-practices--pep-8)
+33. [Walrus Operator](#33-walrus-operator--assignment-expressions)
+34. [Match-Case Statements](#34-match-case-statements-structural-pattern-matching)
+35. [Logging Module](#35-logging-professional-debugging)
+36. [Pathlib Module](#36-pathlib-modern-file-handling)
+37. [Collections Module](#37-collections-module-supercharged-data-structures)
+38. [Itertools Module](#38-itertools-efficient-looping)
+39. [JSON Handling](#39-json-handling-data-interchange)
+40. [SQLite Database](#40-sqlite-database-built-in-sql)
+41. [Environment Variables](#41-environment-variables-security-best-practice)
+42. [Git & GitHub Basics](#42-git--github-basics-version-control)
+
+### 🌐 Web Development & APIs
+43. [Flask Basics](#43-flask-basics-micro-web-framework)
+44. [FastAPI Introduction](#44-fastapi-introduction-modern-high-performance)
+45. [REST API Principles](#45-rest-api-principles)
+46. [HTTP Methods (GET/POST)](#46-http-methods-getpostputdelete)
+47. [Jinja2 Templating](#47-jinja2-templating-html-rendering)
+48. [SQLAlchemy (ORM)](#48-sqlalchemy-orm-object-relational-mapping)
+49. [Pydantic Models](#49-pydantic-models-data-validation)
+50. [Authentication (JWT)](#50-authentication-jwt-json-web-tokens)
+
+### 📊 Data Science & Analysis
+51. [NumPy Basics](#51-numpy-basics-numerical-python)
+52. [Pandas DataFrames](#52-pandas-dataframes-data-manipulation)
+53. [Data Cleaning](#53-data-cleaning-handling-missing-values)
+54. [Matplotlib Plotting](#54-matplotlib-plotting-basic-visualization)
+55. [Seaborn Visualizations](#55-seaborn-visualizations-statistical-plots)
+56. [Exploratory Data Analysis (EDA)](#56-exploratory-data-analysis-eda)
+
+### 🤖 Machine Learning & AI
+57. [Scikit-Learn Intro](#57-scikit-learn-intro-ml-library)
+58. [Linear Regression](#58-linear-regression-predictive-modeling)
+59. [Classification Models](#59-classification-models)
+60. [Train/Test Split](#60-traintest-split-evaluation)
+61. [TensorFlow/Keras Basics](#61-tensorflowkeras-basics-deep-learning)
+62. [Neural Networks Intro](#62-neural-networks-intro)
+63. [OpenCV for Computer Vision](#63-opencv-for-computer-vision)
+64. [NLP with NLTK/Spacy](#64-nlp-with-nltkspacy-text-processing)
+65. [Hugging Face Transformers](#65-hugging-face-transformers-llms)
+
+### ⚡ Performance & Optimization66. [Time Complexity (Big O)](#66-time-complexity-big-o-notation)
+67. [Profiling Code (cProfile)](#67-profiling-code-cprofile)
+68. [Multiprocessing](#68-multiprocessing-true-parallelism)
+69. [Threading vs Asyncio](#69-threading-vs-asyncio-concurrency)
+70. [Caching (functools.lru_cache)](#70-caching-functoolslru_cache)
+71. [Memory Management](#71-memory-management-garbage-collection)
+
+### 🛠️ Testing & Quality Assurance
+72. [Unit Testing (unittest)](#72-unit-testing-unittest)
+73. [Pytest Framework](#73-pytest-framework-modern-testing)
+74. [Mocking & Patching](#74-mocking--patching-isolating-dependencies)
+75. [Test Driven Development (TDD)](#75-test-driven-development-tdd)
+76. [Code Coverage](#76-code-coverage-measuring-tests)
+
+### 🏗️ Software Architecture & Design Patterns
+77. [SOLID Principles](#77-solid-principles-clean-code)
+78. [Singleton Pattern](#78-singleton-pattern)
+79. [Factory Pattern](#79-factory-pattern)
+80. [Observer Pattern](#80-observer-pattern)
+81. [Dependency Injection](#81-dependency-injection)
+82. [MVC Architecture](#82-mvc-architecture-model-view-controller)
+
+### 🐳 DevOps & Deployment
+83. [Docker Basics](#83-docker-basics-containerization)
+84. [Dockerfile for Python](#84-dockerfile-for-python)
+85. [CI/CD with GitHub Actions](#85-cicd-with-github-actions)
+86. [Cloud Deployment (AWS/Heroku)](#86-cloud-deployment-awsheroku)
+87. [Gunicorn & Nginx](#87-gunicorn--nginx-production-server)
+
+### 🔒 Security & Best Practices
+88. [Hashing Passwords (bcrypt)](#88-hashing-passwords-bcrypt)
+89. [SQL Injection Prevention](#89-sql-injection-prevention)
+90. [XSS Protection](#90-xss-protection)
+91. [Rate Limiting](#91-rate-limiting)
+92. [Secrets Management](#92-secrets-management)
+
+### 🧠 Advanced Concepts & Internals
+93. [Metaclasses](#93-metaclasses-class-of-a-class)
+94. [Descriptors](#94-descriptors-managing-attributes)
+95. [Context Managers (Advanced)](#95-context-managers-advanced)
+96. [Coroutines Deep Dive](#96-coroutines-deep-dive)
+97. [Bytecode & Disassembly](#97-bytecode--disassembly-under-the-hood)
+
 
 ---
 
